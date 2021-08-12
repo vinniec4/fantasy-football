@@ -1,0 +1,1 @@
+java -classpath lib/jooq-3.13.2.jar:lib/jooq-meta-3.13.2.jar:lib/jooq-codegen-3.13.2.jar:lib/reactive-streams-1.0.2.jar:lib/postgresql-42.2.23.jar:. org.jooq.codegen.GenerationTool library.xml
