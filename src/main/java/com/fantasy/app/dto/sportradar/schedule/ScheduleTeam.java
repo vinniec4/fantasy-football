@@ -1,5 +1,5 @@
 
-package com.fantasy.app.dto;
+package com.fantasy.app.dto.sportradar.schedule;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Franchise {
+public class ScheduleTeam {
 
     @JsonProperty("id")
     private String id;
@@ -15,6 +15,8 @@ public class Franchise {
     private String name;
     @JsonProperty("alias")
     private String alias;
+    @JsonProperty("sr_id")
+    private String srId;
 
     @JsonProperty("id")
     public String getId() {
@@ -44,6 +46,16 @@ public class Franchise {
     @JsonProperty("alias")
     public void setAlias(String alias) {
         this.alias = alias;
+    }
+
+    @JsonProperty("sr_id")
+    public String getSrId() {
+        return srId;
+    }
+
+    @JsonProperty("sr_id")
+    public void setSrId(String srId) {
+        this.srId = srId;
     }
 
 }

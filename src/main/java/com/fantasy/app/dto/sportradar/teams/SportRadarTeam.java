@@ -1,6 +1,7 @@
 
-package com.fantasy.app.dto;
+package com.fantasy.app.dto.sportradar.teams;
 
+import com.fantasy.app.dto.sportradar.Venue;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

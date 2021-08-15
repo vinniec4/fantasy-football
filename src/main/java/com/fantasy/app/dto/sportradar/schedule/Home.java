@@ -1,15 +1,13 @@
 
-package com.fantasy.app.dto;
+package com.fantasy.app.dto.sportradar.schedule;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Division {
+public class Home {
 
     @JsonProperty("id")
     private String id;
@@ -17,8 +15,8 @@ public class Division {
     private String name;
     @JsonProperty("alias")
     private String alias;
-    @JsonProperty("teams")
-    private List<SportRadarTeam> teams = null;
+    @JsonProperty("sr_id")
+    private String srId;
 
     @JsonProperty("id")
     public String getId() {
@@ -50,14 +48,14 @@ public class Division {
         this.alias = alias;
     }
 
-    @JsonProperty("teams")
-    public List<SportRadarTeam> getTeams() {
-        return teams;
+    @JsonProperty("sr_id")
+    public String getSrId() {
+        return srId;
     }
 
-    @JsonProperty("teams")
-    public void setTeams(List<SportRadarTeam> teams) {
-        this.teams = teams;
+    @JsonProperty("sr_id")
+    public void setSrId(String srId) {
+        this.srId = srId;
     }
 
 }
