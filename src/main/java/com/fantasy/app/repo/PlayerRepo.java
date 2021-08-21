@@ -1,6 +1,7 @@
 package com.fantasy.app.repo;
 
 import com.fantasy.app.dto.Player;
+import com.fantasy.app.jooq.generated.tables.records.PlayersRecord;
 import org.jooq.DSLContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,20 @@ public class PlayerRepo {
         return context.selectFrom(PLAYERS)
                 .where(PLAYERS.TEAM_ID.eq(teamId))
                 .fetchInto(Player.class);
+    }
+
+    public Player getPlayerById(UUID playerId) {
+        return context.selectFrom(PLAYERS)
+                .where(PLAYERS.ID.eq(playerId))
+                .fetchSingleInto(Player.class);
+    }
+
+    public int createPlayer(PlayersRecord record) {
+        return context.executeInsert(record);
+    }
+
+    public int updatePlayer(PlayersRecord record) {
+        return context.executeUpdate(record);
     }
 
     public List<Player> getAllPlayers() {

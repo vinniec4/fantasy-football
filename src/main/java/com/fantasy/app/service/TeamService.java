@@ -1,6 +1,8 @@
 package com.fantasy.app.service;
 
 import com.fantasy.app.dto.Team;
+import com.fantasy.app.dto.sportradar.teams.SportRadarTeam;
+import com.fantasy.app.jooq.generated.tables.records.TeamsRecord;
 import com.fantasy.app.repo.TeamRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +28,41 @@ public class TeamService {
     }
 
     public Team getTeamById(UUID teamId) {
-        return teamRepo.getTeamById(teamId);
+        Team team = null;
+        try {
+            team = teamRepo.getTeamById(teamId);
+        } catch (Exception e) {
+            LOGGER.info("Cannot find team with id: [{}]", teamId, e);
+        }
+        return team;
+    }
+
+    public boolean createTeam(SportRadarTeam team) {
+        int recordsInserted = teamRepo.createTeam(convertFromSportRadarTeam(team));
+        return recordsInserted == 1;
+    }
+
+    public boolean updateByTeam(Team team) {
+        int recordsInserted = teamRepo.updateTeam(convertFromTeam(team));
+        return recordsInserted == 1;
+    }
+
+    public boolean updateBySportRadarTeam(SportRadarTeam team) {
+        int recordsInserted = teamRepo.updateTeam(convertFromSportRadarTeam(team));
+        return recordsInserted == 1;
+    }
+
+    private TeamsRecord convertFromSportRadarTeam(SportRadarTeam sportRadarTeam) {
+        return new TeamsRecord(UUID.fromString(sportRadarTeam.getId()),
+            sportRadarTeam.getName(),
+            null,
+            null);
+    }
+
+    private TeamsRecord convertFromTeam(Team team) {
+        return new TeamsRecord(team.getId(),
+                team.getName(),
+                team.getImageId(),
+                team.getByeWeek());
     }
 }

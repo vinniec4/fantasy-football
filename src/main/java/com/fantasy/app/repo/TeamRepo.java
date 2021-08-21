@@ -1,6 +1,7 @@
 package com.fantasy.app.repo;
 
 import com.fantasy.app.dto.Team;
+import com.fantasy.app.jooq.generated.tables.records.TeamsRecord;
 import org.jooq.DSLContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,4 +34,27 @@ public class TeamRepo {
                 .fetchSingleInto(Team.class);
     }
 
+    public int createTeam(Team team) {
+        return context.insertInto(TEAMS, TEAMS.ID, TEAMS.NAME, TEAMS.BYE_WEEK, TEAMS.IMAGE_ID)
+                .values(team.getId(), team.getName(), team.getByeWeek(), team.getImageId())
+                .execute();
+    }
+
+    public int updateTeam(UUID id, Team teamRecord) {
+        return context.update(TEAMS)
+                .set(TEAMS.ID, teamRecord.getId())
+                .set(TEAMS.NAME, teamRecord.getName())
+                .set(TEAMS.BYE_WEEK, teamRecord.getByeWeek())
+                .set(TEAMS.IMAGE_ID, teamRecord.getImageId())
+                .where(TEAMS.ID.eq(id))
+                .execute();
+    }
+
+    public int updateTeam(TeamsRecord record) {
+        return context.executeUpdate(record);
+    }
+
+    public int createTeam(TeamsRecord record) {
+        return context.executeInsert(record);
+    }
 }

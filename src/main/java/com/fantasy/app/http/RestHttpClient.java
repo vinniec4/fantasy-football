@@ -3,18 +3,23 @@ package com.fantasy.app.http;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.lang.NonNull;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -33,10 +38,11 @@ public class RestHttpClient {
      * @return mapped object response
      * @throws IOException getting response
      */
-    public static <T> T get(String uri, Class<T> clazz, List<Header> headers) throws IOException {
+    public static <T> T get(String uri, Class<T> clazz, @NonNull List<Header> headers, List<NameValuePair> params) throws IOException, URISyntaxException {
         String result = "";
         HttpGet request = new HttpGet(uri);
         addRequestHeaders(headers, request);
+        request.setURI(buildUriWithParams(request, params));
 
         try (CloseableHttpResponse response = HttpClients.createDefault().execute(request)) {
             LOGGER.trace("get request response status: {}", response.getStatusLine());
@@ -98,6 +104,12 @@ public class RestHttpClient {
         } else {
             return new ObjectMapper().readValue(result, classT);
         }
+    }
+
+    private static URI buildUriWithParams(HttpRequestBase request, List<NameValuePair> params) throws URISyntaxException {
+        return new URIBuilder(request.getURI())
+                .addParameters(params)
+                .build();
     }
 
 }
