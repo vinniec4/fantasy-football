@@ -3,7 +3,7 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>org.postgresql.Driver</driver>
-        <url>jdbc:postgresql://localhost:5432/postgres</url>
+        <url>jdbc:postgresql://fantasy.cqkuioum3e1f.us-east-1.rds.amazonaws.com:5432/fantasy</url>
         <user>vinnie</user>
         <password></password>
     </jdbc>
