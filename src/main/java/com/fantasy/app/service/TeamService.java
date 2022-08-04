@@ -32,7 +32,7 @@ public class TeamService {
         try {
             team = teamRepo.getTeamById(teamId);
         } catch (Exception e) {
-            LOGGER.info("Cannot find team with id: [{}]", teamId, e);
+            LOGGER.info("Cannot find team with id: [{}]. Creating new one", teamId);
         }
         return team;
     }

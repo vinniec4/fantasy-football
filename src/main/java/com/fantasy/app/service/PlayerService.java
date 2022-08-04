@@ -39,7 +39,7 @@ public class PlayerService {
         try {
             player = playerRepo.getPlayerById(playerId);
         } catch (Exception e) {
-            LOGGER.info("Cannot find player with id: [{}]", playerId, e);
+            LOGGER.info("Cannot find player with id: [{}]. Creating new one", playerId);
         }
         return player;
     }
