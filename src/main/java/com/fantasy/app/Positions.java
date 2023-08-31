@@ -6,5 +6,5 @@ public enum Positions {
     WR,
     TE,
     FB,
-    K
+    PK
 }

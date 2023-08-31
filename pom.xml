@@ -107,7 +107,7 @@
 				</executions>
 				<configuration>
 					<driver>org.postgresql.Driver</driver>
-					<url>jdbc:postgresql://fantasy.cqkuioum3e1f.us-east-1.rds.amazonaws.com:5432/fantasy</url>
+					<url>jdbc:postgresql://0.0.0.0:5432/postgres</url>
 					<user>postgres</user>
 					<password>postgres</password>
 					<baselineOnMigrate>true</baselineOnMigrate>

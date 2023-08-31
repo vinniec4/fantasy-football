@@ -1,36 +1,22 @@
 
-package com.fantasy.app.dto.sportradar.schedule;
+package com.fantasy.app.dto.espn.roster;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NFLSchedule {
+public class Season {
 
-    @JsonProperty("id")
-    private String id;
     @JsonProperty("year")
     private int year;
+    @JsonProperty("displayName")
+    private String displayName;
     @JsonProperty("type")
-    private String type;
+    private int type;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("weeks")
-    private List<Week> weeks = null;
-
-    @JsonProperty("id")
-    public String getId() {
-        return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(String id) {
-        this.id = id;
-    }
 
     @JsonProperty("year")
     public int getYear() {
@@ -42,13 +28,23 @@ public class NFLSchedule {
         this.year = year;
     }
 
+    @JsonProperty("displayName")
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    @JsonProperty("displayName")
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
     @JsonProperty("type")
-    public String getType() {
+    public int getType() {
         return type;
     }
 
     @JsonProperty("type")
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -60,16 +56,6 @@ public class NFLSchedule {
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
-    }
-
-    @JsonProperty("weeks")
-    public List<Week> getWeeks() {
-        return weeks;
-    }
-
-    @JsonProperty("weeks")
-    public void setWeeks(List<Week> weeks) {
-        this.weeks = weeks;
     }
 
 }

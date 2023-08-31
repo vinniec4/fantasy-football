@@ -1,6 +1,6 @@
 package com.fantasy.app.controller;
 
-import com.fantasy.app.service.SportRadarService;
+import com.fantasy.app.service.ESPNService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +9,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class SportRadarController extends BaseController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SportRadarController.class);
+public class ESPNController extends BaseController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ESPNController.class);
 
-    private final SportRadarService sportRadarService;
+    private final ESPNService espnService;
 
     @Autowired
-    public SportRadarController(SportRadarService sportRadarService) {
-        this.sportRadarService = sportRadarService;
+    public ESPNController(ESPNService espnService) {
+        this.espnService = espnService;
     }
 
     @GetMapping("/populateDatabase")
     public ResponseEntity<String> populateDatabase() {
-        sportRadarService.populateDatabase();
+        espnService.populateDatabase();
         return ResponseEntity.ok("Populating Database");
     }
 

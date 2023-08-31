@@ -30,7 +30,7 @@ public class TeamController extends BaseController {
 
     @GetMapping("teams/{teamId}")
     public ResponseEntity<Team> getTeamsById(@PathVariable String teamId) {
-        return ResponseEntity.ok(teamService.getTeamById(convertToUUID(teamId)));
+        return ResponseEntity.ok(teamService.getTeamById(teamId));
     }
 
 }

@@ -4,14 +4,16 @@
 package com.fantasy.app.jooq.generated;
 
 
+import com.fantasy.app.jooq.generated.tables.FlywaySchemaHistory;
 import com.fantasy.app.jooq.generated.tables.Players;
 import com.fantasy.app.jooq.generated.tables.Teams;
-import org.jooq.Catalog;
-import org.jooq.Table;
-import org.jooq.impl.SchemaImpl;
 
 import java.util.Arrays;
 import java.util.List;
+
+import org.jooq.Catalog;
+import org.jooq.Table;
+import org.jooq.impl.SchemaImpl;
 
 
 /**
@@ -20,12 +22,17 @@ import java.util.List;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class FantasyFootball extends SchemaImpl {
 
-    private static final long serialVersionUID = -1175721533;
+    private static final long serialVersionUID = -1231647908;
 
     /**
      * The reference instance of <code>fantasy_football</code>
      */
     public static final FantasyFootball FANTASY_FOOTBALL = new FantasyFootball();
+
+    /**
+     * The table <code>fantasy_football.flyway_schema_history</code>.
+     */
+    public final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
 
     /**
      * The table <code>fantasy_football.players</code>.
@@ -53,6 +60,7 @@ public class FantasyFootball extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
+            FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY,
             Players.PLAYERS,
             Teams.TEAMS);
     }

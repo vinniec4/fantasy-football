@@ -4,8 +4,10 @@
 package com.fantasy.app.jooq.generated;
 
 
+import com.fantasy.app.jooq.generated.tables.FlywaySchemaHistory;
 import com.fantasy.app.jooq.generated.tables.Players;
 import com.fantasy.app.jooq.generated.tables.Teams;
+
 import org.jooq.Index;
 import org.jooq.OrderField;
 import org.jooq.impl.Internal;
@@ -22,6 +24,7 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
+    public static final Index FLYWAY_SCHEMA_HISTORY_S_IDX = Indexes0.FLYWAY_SCHEMA_HISTORY_S_IDX;
     public static final Index PLAYERS_ID_UINDEX = Indexes0.PLAYERS_ID_UINDEX;
     public static final Index PLAYERS_NAME_INDEX = Indexes0.PLAYERS_NAME_INDEX;
     public static final Index PLAYERS_TEAM_INDEX = Indexes0.PLAYERS_TEAM_INDEX;
@@ -33,6 +36,7 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
+        public static Index FLYWAY_SCHEMA_HISTORY_S_IDX = Internal.createIndex("flyway_schema_history_s_idx", FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, new OrderField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.SUCCESS }, false);
         public static Index PLAYERS_ID_UINDEX = Internal.createIndex("players_id_uindex", Players.PLAYERS, new OrderField[] { Players.PLAYERS.ID }, true);
         public static Index PLAYERS_NAME_INDEX = Internal.createIndex("players_name_index", Players.PLAYERS, new OrderField[] { Players.PLAYERS.NAME }, false);
         public static Index PLAYERS_TEAM_INDEX = Internal.createIndex("players_team_index", Players.PLAYERS, new OrderField[] { Players.PLAYERS.TEAM_ID }, false);

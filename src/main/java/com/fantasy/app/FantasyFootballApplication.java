@@ -8,7 +8,6 @@ public class FantasyFootballApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FantasyFootballApplication.class, args);
-
 	}
 
 }

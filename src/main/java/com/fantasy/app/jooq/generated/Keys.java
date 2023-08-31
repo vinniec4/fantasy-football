@@ -4,10 +4,13 @@
 package com.fantasy.app.jooq.generated;
 
 
+import com.fantasy.app.jooq.generated.tables.FlywaySchemaHistory;
 import com.fantasy.app.jooq.generated.tables.Players;
 import com.fantasy.app.jooq.generated.tables.Teams;
+import com.fantasy.app.jooq.generated.tables.records.FlywaySchemaHistoryRecord;
 import com.fantasy.app.jooq.generated.tables.records.PlayersRecord;
 import com.fantasy.app.jooq.generated.tables.records.TeamsRecord;
+
 import org.jooq.ForeignKey;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -30,6 +33,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = UniqueKeys0.FLYWAY_SCHEMA_HISTORY_PK;
     public static final UniqueKey<PlayersRecord> PLAYERS_PK = UniqueKeys0.PLAYERS_PK;
     public static final UniqueKey<TeamsRecord> TEAMS_PK = UniqueKeys0.TEAMS_PK;
 
@@ -44,6 +48,7 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class UniqueKeys0 {
+        public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = Internal.createUniqueKey(FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, "flyway_schema_history_pk", new TableField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK }, true);
         public static final UniqueKey<PlayersRecord> PLAYERS_PK = Internal.createUniqueKey(Players.PLAYERS, "players_pk", new TableField[] { Players.PLAYERS.ID }, true);
         public static final UniqueKey<TeamsRecord> TEAMS_PK = Internal.createUniqueKey(Teams.TEAMS, "teams_pk", new TableField[] { Teams.TEAMS.ID }, true);
     }

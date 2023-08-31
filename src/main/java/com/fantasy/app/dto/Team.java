@@ -1,18 +1,16 @@
 package com.fantasy.app.dto;
 
-import java.util.UUID;
-
 public class Team {
-    private UUID id;
+    private String id;
     private String name;
-    private UUID imageId;
+    private String imageUrl;
     private int byeWeek;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -24,12 +22,12 @@ public class Team {
         this.name = name;
     }
 
-    public UUID getImageId() {
-        return imageId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageId(UUID imageId) {
-        this.imageId = imageId;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public int getByeWeek() {

@@ -25,7 +25,7 @@ public class PlayerController extends BaseController {
 
     @GetMapping("players")
     public ResponseEntity<List<Player>> getPlayers(@RequestParam(name = "teamId") String teamId) {
-        return ResponseEntity.ok(playerService.getPlayersByTeamId(convertToUUID(teamId)));
+        return ResponseEntity.ok(playerService.getPlayersByTeamId(teamId));
     }
 
 }

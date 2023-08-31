@@ -1,5 +1,5 @@
 
-package com.fantasy.app.dto.sportradar.roster;
+package com.fantasy.app.dto.espn.roster;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,14 +11,12 @@ public class Coach {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("full_name")
-    private String fullName;
-    @JsonProperty("first_name")
+    @JsonProperty("firstName")
     private String firstName;
-    @JsonProperty("last_name")
+    @JsonProperty("lastName")
     private String lastName;
-    @JsonProperty("position")
-    private String position;
+    @JsonProperty("experience")
+    private int experience;
 
     @JsonProperty("id")
     public String getId() {
@@ -30,44 +28,34 @@ public class Coach {
         this.id = id;
     }
 
-    @JsonProperty("full_name")
-    public String getFullName() {
-        return fullName;
-    }
-
-    @JsonProperty("full_name")
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    @JsonProperty("first_name")
+    @JsonProperty("firstName")
     public String getFirstName() {
         return firstName;
     }
 
-    @JsonProperty("first_name")
+    @JsonProperty("firstName")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    @JsonProperty("last_name")
+    @JsonProperty("lastName")
     public String getLastName() {
         return lastName;
     }
 
-    @JsonProperty("last_name")
+    @JsonProperty("lastName")
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @JsonProperty("position")
-    public String getPosition() {
-        return position;
+    @JsonProperty("experience")
+    public int getExperience() {
+        return experience;
     }
 
-    @JsonProperty("position")
-    public void setPosition(String position) {
-        this.position = position;
+    @JsonProperty("experience")
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 
 }

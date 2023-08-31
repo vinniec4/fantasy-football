@@ -3,7 +3,7 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>org.postgresql.Driver</driver>
-        <url>jdbc:postgresql://fantasy.cqkuioum3e1f.us-east-1.rds.amazonaws.com:5432/fantasy</url>
+        <url>jdbc:postgresql://0.0.0.0:5432/postgres</url>
         <user>postgres</user>
         <password>postgres</password>
     </jdbc>
@@ -39,10 +39,10 @@
 
         <target>
             <!-- The destination package of your generated classes (within the destination directory) -->
-            <packageName>test.generated</packageName>
+            <packageName>com.fantasy.app.jooq.generated</packageName>
 
             <!-- The destination directory of your generated classes. Using Maven directory layout here -->
-            <directory>/Users/vinnie/Projects/fantasy-football/java/com/fantasy/app/jooq</directory>
+            <directory>/Users/vinnie/Projects/fantasy-football/src/main/java/com/fantasy/app/jooq</directory>
         </target>
     </generator>
 </configuration>

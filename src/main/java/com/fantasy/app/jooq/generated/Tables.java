@@ -3,14 +3,22 @@
  */
 package com.fantasy.app.jooq.generated;
 
+
+import com.fantasy.app.jooq.generated.tables.FlywaySchemaHistory;
 import com.fantasy.app.jooq.generated.tables.Players;
 import com.fantasy.app.jooq.generated.tables.Teams;
+
 
 /**
  * Convenience access to all tables in fantasy_football
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>fantasy_football.flyway_schema_history</code>.
+     */
+    public static final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
 
     /**
      * The table <code>fantasy_football.players</code>.

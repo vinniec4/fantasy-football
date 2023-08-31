@@ -2,7 +2,7 @@ package com.fantasy.app.service;
 
 import com.fantasy.app.dto.Player;
 import com.fantasy.app.dto.Team;
-import com.fantasy.app.dto.sportradar.roster.RosterPlayer;
+import com.fantasy.app.dto.espn.roster.Item;
 import com.fantasy.app.jooq.generated.tables.records.PlayersRecord;
 import com.fantasy.app.repo.PlayerRepo;
 import org.slf4j.Logger;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class PlayerService {
@@ -24,7 +23,7 @@ public class PlayerService {
         this.playerRepo = playerRepo;
     }
 
-    public List<Player> getPlayersByTeamId(UUID teamId) {
+    public List<Player> getPlayersByTeamId(String teamId) {
         List<Player> players;
         if(teamId == null) {
             players = playerRepo.getAllPlayers();
@@ -34,7 +33,7 @@ public class PlayerService {
         return players;
     }
 
-    public Player getPlayerById(UUID playerId) {
+    public Player getPlayerById(String playerId) {
         Player player = null;
         try {
             player = playerRepo.getPlayerById(playerId);
@@ -44,22 +43,22 @@ public class PlayerService {
         return player;
     }
 
-    public boolean createPlayer(RosterPlayer rosterPlayer, Team team) {
+    public boolean createPlayer(Item rosterPlayer, Team team) {
         int recordsInserted = playerRepo.createPlayer(convertFromRosterPlayer(rosterPlayer, team));
         return recordsInserted == 1;
     }
 
-    public boolean updatePlayer(RosterPlayer rosterPlayer, Team team) {
+    public boolean updatePlayer(Item rosterPlayer, Team team) {
         int recordsInserted = playerRepo.updatePlayer(convertFromRosterPlayer(rosterPlayer, team));
         return recordsInserted == 1;
     }
 
-    private PlayersRecord convertFromRosterPlayer(RosterPlayer rosterPlayer, Team team) {
-        return new PlayersRecord(UUID.fromString(rosterPlayer.getId()),
-                rosterPlayer.getName(),
-                rosterPlayer.getPosition(),
+    private PlayersRecord convertFromRosterPlayer(Item item, Team team) {
+        return new PlayersRecord(item.getId(),
+                item.getDisplayName(),
+                item.getPosition().getAbbreviation(),
                 team.getId(),
-                null,
+                item.getHeadshot() != null ? item.getHeadshot().getHref() : "",
                 team.getByeWeek());
     }
 }

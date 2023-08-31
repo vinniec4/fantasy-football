@@ -1,5 +1,5 @@
 
-package com.fantasy.app.dto.sportradar.schedule;
+package com.fantasy.app.dto.espn.roster;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,16 +7,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ScheduleTeam {
+public class Status {
 
     @JsonProperty("id")
     private String id;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("alias")
-    private String alias;
-    @JsonProperty("sr_id")
-    private String srId;
+    @JsonProperty("type")
+    private String type;
+    @JsonProperty("abbreviation")
+    private String abbreviation;
 
     @JsonProperty("id")
     public String getId() {
@@ -38,24 +38,24 @@ public class ScheduleTeam {
         this.name = name;
     }
 
-    @JsonProperty("alias")
-    public String getAlias() {
-        return alias;
+    @JsonProperty("type")
+    public String getType() {
+        return type;
     }
 
-    @JsonProperty("alias")
-    public void setAlias(String alias) {
-        this.alias = alias;
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
     }
 
-    @JsonProperty("sr_id")
-    public String getSrId() {
-        return srId;
+    @JsonProperty("abbreviation")
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
-    @JsonProperty("sr_id")
-    public void setSrId(String srId) {
-        this.srId = srId;
+    @JsonProperty("abbreviation")
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
 }

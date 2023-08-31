@@ -1,7 +1,7 @@
 package com.fantasy.app.service;
 
 import com.fantasy.app.dto.Team;
-import com.fantasy.app.dto.sportradar.teams.SportRadarTeam;
+import com.fantasy.app.dto.espn.team.ProTeam;
 import com.fantasy.app.jooq.generated.tables.records.TeamsRecord;
 import com.fantasy.app.repo.TeamRepo;
 import org.slf4j.Logger;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class TeamService {
@@ -27,7 +26,7 @@ public class TeamService {
         return teamRepo.getTeams();
     }
 
-    public Team getTeamById(UUID teamId) {
+    public Team getTeamById(String teamId) {
         Team team = null;
         try {
             team = teamRepo.getTeamById(teamId);
@@ -37,8 +36,8 @@ public class TeamService {
         return team;
     }
 
-    public boolean createTeam(SportRadarTeam team) {
-        int recordsInserted = teamRepo.createTeam(convertFromSportRadarTeam(team));
+    public boolean createTeam(ProTeam team) {
+        int recordsInserted = teamRepo.createTeam(convertFromEspnTeam(team));
         return recordsInserted == 1;
     }
 
@@ -47,22 +46,22 @@ public class TeamService {
         return recordsInserted == 1;
     }
 
-    public boolean updateBySportRadarTeam(SportRadarTeam team) {
-        int recordsInserted = teamRepo.updateTeam(convertFromSportRadarTeam(team));
+    public boolean updateByEspnTeam(ProTeam team) {
+        int recordsInserted = teamRepo.updateTeam(convertFromEspnTeam(team));
         return recordsInserted == 1;
     }
 
-    private TeamsRecord convertFromSportRadarTeam(SportRadarTeam sportRadarTeam) {
-        return new TeamsRecord(UUID.fromString(sportRadarTeam.getId()),
-            sportRadarTeam.getName(),
+    private TeamsRecord convertFromEspnTeam(ProTeam proTeam) {
+        return new TeamsRecord(String.valueOf(proTeam.getId()),
+            proTeam.getName(),
             null,
-            null);
+                proTeam.getByeWeek());
     }
 
     private TeamsRecord convertFromTeam(Team team) {
         return new TeamsRecord(team.getId(),
                 team.getName(),
-                team.getImageId(),
+                team.getImageUrl(),
                 team.getByeWeek());
     }
 }

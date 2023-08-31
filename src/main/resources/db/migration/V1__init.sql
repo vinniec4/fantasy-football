@@ -1,16 +1,14 @@
-create user vinnie;
-
 create table fantasy_football.teams
 (
-	id uuid not null
+	id text not null
 		constraint teams_pk
 			primary key,
 	name text not null,
-	image_id uuid,
+	image_url text,
 	bye_week integer
 );
 
-alter table fantasy_football.teams owner to vinnie;
+alter table fantasy_football.teams owner to postgres;
 
 create unique index teams_id_uindex
 	on fantasy_football.teams (id);
@@ -20,19 +18,19 @@ create index teams_name_index
 
 create table fantasy_football.players
 (
-	id uuid not null
+	id text not null
 		constraint players_pk
 			primary key,
 	name text not null,
 	position text not null,
-	team_id uuid
+	team_id text
 		constraint players_teams_id_fk
 			references fantasy_football.teams,
-	image_id text,
+	image_url text,
 	bye_week integer not null
 );
 
-alter table fantasy_football.players owner to vinnie;
+alter table fantasy_football.players owner to postgres;
 
 create index players_name_index
 	on fantasy_football.players (name);
